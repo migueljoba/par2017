@@ -98,7 +98,7 @@ public class UsuarioManager {
         return retValue;
     }
 
-    public Usuario getCategoriaById(int id) {
+    public Usuario getById(int id) {
         Usuario retValue = null;
 
         Connection conn = null;
