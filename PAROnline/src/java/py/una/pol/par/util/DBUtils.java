@@ -17,8 +17,8 @@ public class DBUtils {
         
         /* credenciales de conexión a la DB */
         // TODO hacer que esto sea configurable en algún XML
-        String username = "paronline";
-        String password = "paronline";
+        String username = "postgres";
+        String password = "admin";
         Integer portNum = 5432;
         String dbName = "paronline";
 

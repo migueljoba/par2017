@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>AutenticacionFiltro</filter-name>
+        <!-- obligatorio -->
+        <filter-class>py.una.pol.par.filter.AutenticacionFiltro</filter-class>
+        <!-- obligatorio -->
+        <init-param>
+            <!-- opcional -->
+            <param-name>test</param-name>
+            <param-value>testValue</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>AutenticacionFiltro</filter-name>
+        <!-- mandatory -->
+        <url-pattern>/*</url-pattern>
+        <!-- either url-pattern or servlet-name is mandatory -->
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
     <servlet>
         <servlet-name>UsuarioServlet</servlet-name>
         <servlet-class>py.una.pol.par.controller.UsuarioServlet</servlet-class>
@@ -8,6 +26,14 @@
         <servlet-name>CategoriaServlet</servlet-name>
         <servlet-class>py.una.pol.par.controller.CategoriaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProductoServlet</servlet-name>
+        <servlet-class>py.una.pol.par.controller.ProductoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductoAdminServlet</servlet-name>
+        <servlet-class>py.una.pol.par.controller.ProductoAdminServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/usuario</url-pattern>
@@ -15,6 +41,19 @@
     <servlet-mapping>
         <servlet-name>CategoriaServlet</servlet-name>
         <url-pattern>/categoria</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductoServlet</servlet-name>
+        <url-pattern>/producto</url-pattern>
+        <url-pattern>/producto/editar</url-pattern>
+        <url-pattern>/producto/eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductoAdminServlet</servlet-name>
+        <url-pattern>/admin/producto</url-pattern>
+        <url-pattern>/admin/producto/agregar</url-pattern>
+        <url-pattern>/admin/producto/editar</url-pattern>
+        <url-pattern>/admin/producto/eliminar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

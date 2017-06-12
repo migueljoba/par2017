@@ -5,20 +5,26 @@
  */
 package py.una.pol.par.entities;
 
-/**
- *
- * @author mjose
- */
+import javax.servlet.http.HttpServletRequest;
+
 public class Usuario {
+
     private Integer usuarioId;
     private String nombre;
     private String apellido;
     private Integer rol;
     private String correo;
-    
+
     public Usuario() {
     }
 
+    public Usuario(HttpServletRequest req) {
+        this.nombre = req.getParameter("nombre");
+        this.apellido = req.getParameter("apellido");
+        this.rol = Integer.parseInt(req.getParameter("rol"));
+        this.correo = req.getParameter("correo");
+    }
+    
     public Integer getUsuarioId() {
         return usuarioId;
     }
@@ -58,6 +64,5 @@ public class Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
-    
+
 }

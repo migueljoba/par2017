@@ -12,6 +12,9 @@ import py.una.pol.par.util.DBUtils;
 import py.una.pol.par.entities.Usuario;
 
 public class UsuarioManager {
+    
+    private static String INSERT_SQL = "INSERT INTO USUARIO(nombre, apellido, tipo_usuario, login_name) "
+            + " VALUES (?, ?, ?, ?) ";
 
     public boolean insertar(Usuario usuario) {
         boolean retValue = true;
@@ -21,8 +24,7 @@ public class UsuarioManager {
 
         try {
             conn = DBUtils.getConnection();
-            pstmt = conn.prepareStatement("insert into usuario (nombre, apellido, rol, correo) "
-                    + "values (?, ?, ?, ?)");
+            pstmt = conn.prepareStatement(INSERT_SQL);
             pstmt.setString(1, usuario.getNombre());
             pstmt.setString(2, usuario.getApellido());
             pstmt.setInt(3, usuario.getRol());
@@ -80,7 +82,7 @@ public class UsuarioManager {
         Connection conn = null;
         PreparedStatement pstmt = null;
 
-        String sqlString = "DELEETE FROM usuario WHERE id_usuario = ?";
+        String sqlString = "DELETE FROM usuario WHERE id_usuario = ?";
 
         try {
             conn = DBUtils.getConnection();
@@ -105,7 +107,7 @@ public class UsuarioManager {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        String sqlString = "SELECT * FROM usuario WHERE usuario_id = ?";
+        String sqlString = "SELECT * FROM usuario WHERE id_usuario = ?";
 
         try {
             conn = DBUtils.getConnection();
